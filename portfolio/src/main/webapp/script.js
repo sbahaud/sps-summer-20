@@ -16,13 +16,9 @@
  * Adds a random greeting to the page.
  */
 function addRandomMovie() {
-  const movies =
-      ['Parasite', 'Foreigner', 'The Farewell', 'Downton Abbey', 'American factory'];
-
-  // Pick a random greeting.
-  const movie = movies[Math.floor(Math.random() * movies.length)];
-
-  // Add it to the page.
-  const movieName = document.getElementById('movie-name');
-  movieName.innerText = movie;
+  fetch('/data').then(response => response.text()).then((movie) => {
+    // Add it to the page.
+    const movieName = document.getElementById('movie-name');
+    movieName.innerText = movie;
+  })
 }
